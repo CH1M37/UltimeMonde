@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/__Scenes/GravityWorld.unity
     guid: d94f90aac505ebb448db8bc14f9ceb5a
+  - enabled: 1
+    path: Assets/__Scenes/UI TEST.unity
+    guid: 9fbe0843956478044af195d2eceede8b
   m_configObjects: {}
