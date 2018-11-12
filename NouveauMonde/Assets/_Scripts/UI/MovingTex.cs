@@ -10,8 +10,8 @@ public class MovingTex : MonoBehaviour {
 
 	void Update () {
 
-        float OffsetX = Time.time * ScrollX;
-        float OffsetY = Time.time * ScrollY;
+        float OffsetX = Time.unscaledTime * ScrollX;
+        float OffsetY = Time.unscaledTime * ScrollY;
 
         GetComponent<Image>().material.mainTextureOffset = new Vector2(OffsetX, OffsetY);
 
