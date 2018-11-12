@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class MovingTex : MonoBehaviour {
 
-    public float ScrollX = 0.5f;
-    public float ScrollY = 0.5f;
+    public float ScrollX = 0.2f;
+    public float ScrollY = 0.2f;
 
 	void Update () {
 
