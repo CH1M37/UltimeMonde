@@ -2309,17 +2309,17 @@ Prefab:
     - target: {fileID: 114244067884916484, guid: d1bbfb8b2bedc354fbb01e007005556a,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.88235295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114244067884916484, guid: d1bbfb8b2bedc354fbb01e007005556a,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.96862745
+      value: 0.59607846
       objectReference: {fileID: 0}
     - target: {fileID: 114244067884916484, guid: d1bbfb8b2bedc354fbb01e007005556a,
         type: 2}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.84705883
       objectReference: {fileID: 0}
     - target: {fileID: 114244067884916484, guid: d1bbfb8b2bedc354fbb01e007005556a,
         type: 2}
@@ -2509,6 +2509,25 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1164776173}
   m_CullTransparentMesh: 0
+--- !u!1 &1179105635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258653366840986, guid: d59cc0a3701ddc64795b0064237bf520,
+    type: 2}
+  m_PrefabInternal: {fileID: 1250937745}
+--- !u!114 &1179105639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1179105635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1.5, y: 1.5}
+  m_UseGraphicAlpha: 1
 --- !u!4 &1183809542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4126986716978896, guid: 6e2118e0d421d9f4486bc22f32868a49,
@@ -3032,7 +3051,7 @@ Prefab:
         type: 2}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: bf25ea0fd2a1f654189a12edaa259712, type: 2}
+      objectReference: {fileID: 2100000, guid: 927a04cf7aaafe34da84a3010014400b, type: 2}
     - target: {fileID: 114185458580676526, guid: d59cc0a3701ddc64795b0064237bf520,
         type: 2}
       propertyPath: m_FontData.m_FontSize
@@ -3056,17 +3075,17 @@ Prefab:
     - target: {fileID: 114185458580676526, guid: d59cc0a3701ddc64795b0064237bf520,
         type: 2}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.88235295
       objectReference: {fileID: 0}
     - target: {fileID: 114185458580676526, guid: d59cc0a3701ddc64795b0064237bf520,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.71649486
+      value: 0.15294118
       objectReference: {fileID: 0}
     - target: {fileID: 114185458580676526, guid: d59cc0a3701ddc64795b0064237bf520,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.28566852
       objectReference: {fileID: 0}
     - target: {fileID: 114185458580676526, guid: d59cc0a3701ddc64795b0064237bf520,
         type: 2}
@@ -3150,6 +3169,25 @@ MonoBehaviour:
     type: 2}
   playerPrefab: {fileID: 1655969549842726, guid: 3eb40f248fb4acc4b9da0b91dd87e087,
     type: 2}
+--- !u!1 &1317697511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1380925064287624, guid: d1bbfb8b2bedc354fbb01e007005556a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1130156878}
+--- !u!114 &1317697515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317697511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1.2, y: 1.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1353699296
 GameObject:
   m_ObjectHideFlags: 0
