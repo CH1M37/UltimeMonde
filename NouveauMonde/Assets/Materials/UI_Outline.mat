@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: UI_losangesR
+  m_Name: UI_Outline
   m_Shader: {fileID: 10760, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 4
@@ -43,9 +43,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 37509f3b3795236409205b0bbdba47d7, type: 3}
-        m_Scale: {x: 13.4, y: 2}
-        m_Offset: {x: 5.188561, y: 5.188561}
+        m_Texture: {fileID: 2800000, guid: b00d87bc4ddb2534ebda7140e30c83e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
