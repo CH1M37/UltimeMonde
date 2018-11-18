@@ -1790,7 +1790,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 643772555}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cd10da8871d1d0a4abceb2d36b250705, type: 3}
@@ -2860,7 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 540931725}
-  initialTime: 180
+  initialTime: 3
   timeSinceLastDestruction: 0
   wasteArray: []
   checkWaste: 0
