@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour {
     private bool canJump = false;
     [SerializeField]
     private float rotationSpeed;
-
+   
     private Vector3 moveDirection;
     private Camera mainCamera;
 
@@ -30,7 +30,6 @@ public class PlayerMovementScript : MonoBehaviour {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        cameraForward = mainCamera.transform.forward;
         moveDirection = (v * transform.forward + h * mainCamera.transform.right).normalized;
 
         //Jump
