@@ -40,15 +40,26 @@ public class PlayerMovementScript : MonoBehaviour {
 
         //Rotate
         transform.RotateAround(transform.position, transform.up, Time.deltaTime * Input.GetAxisRaw("Camera") * rotationSpeed);
+
+        Debug.Log("speed : " + rb.velocity.magnitude);
+
+        //move
+        if (rb.velocity.magnitude < maxSpeed)
+        {
+            rb.AddForce(moveDirection * moveSpeed);
+        }
     }
 
     void FixedUpdate()
     {
+        /*
+        Debug.Log("angular speed : " + rb.angularVelocity);
+
         //move
         if(rb.velocity.magnitude < maxSpeed)
         {
             rb.AddForce(moveDirection * moveSpeed);
-        }
+        }*/
     }
 }
                

@@ -56,7 +56,8 @@ public class Spawner : MonoBehaviour
             float z = radius * Mathf.Cos(teta) * Mathf.Sin(phi);
 
             Vector3 startPos = new Vector3(x, y, z);
-            Instantiate(playerPrefab, startPos, Quaternion.identity);
+            GameObject player = Instantiate(playerPrefab, startPos, Quaternion.identity);
+            player.transform.localScale *= 0.1f; 
         }
 
         if (isRandom)

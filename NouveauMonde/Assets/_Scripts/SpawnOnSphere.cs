@@ -8,9 +8,17 @@ public class SpawnOnSphere : MonoBehaviour {
     [Header("Number of buildings from N to S")]
     [SerializeField]
     private float n;
-    [Header("Buildings to Spawn")]
+    [Header("Buildings Parameters")]
     [SerializeField]
     private List<GameObject> buildingsPrefabsList;
+    [SerializeField]
+    private bool useBuildings = false;
+    [SerializeField]
+    private GameObject cubePrefab;
+    [SerializeField]
+    private bool useCubes = true;
+    [SerializeField]
+    private float buildingsScale = 1f;
 
     private GameObject planet;
     private GameObject buildingContainer;
@@ -19,14 +27,13 @@ public class SpawnOnSphere : MonoBehaviour {
 
     public void SpawnBuildings()
     {
-        buildingsList = new List<GameObject>();
         Reset();
+
         buildingContainer = GameObject.Find("BuildingContainer");
-        //Get sphere radius
         planet = GameObject.FindGameObjectWithTag("planet");
         radius = planet.GetComponent<SphereCollider>().radius * planet.transform.localScale.x;
 
-        if (buildingsPrefabsList.Count == 0)
+        if (useCubes)
         {
             //spawn cube
             for (int i = 1; i < 2 * n - 1; i++)
@@ -39,19 +46,20 @@ public class SpawnOnSphere : MonoBehaviour {
                     float y = radius * Mathf.Cos(phi);
                     float z = radius * Mathf.Cos(teta) * Mathf.Sin(phi);
 
-                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    buildingsList.Add(cube);
+                    GameObject cube = Instantiate(cubePrefab);
                     cube.transform.SetParent(buildingContainer.transform);
                     cube.transform.position = new Vector3(x, y, z);
-                    cube.transform.localScale = new Vector3(1f, 1f, 1f);
+                    cube.transform.localScale = new Vector3(buildingsScale, buildingsScale, buildingsScale);
                     //cube orientation
+                    Vector3 forward = new Vector3(x, 0, z).normalized ;
+                    cube.transform.rotation = Quaternion.FromToRotation(cube.transform.forward, forward);
                     Vector3 normal = cube.transform.position.normalized;
-                    cube.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
-
+                    float angle = Vector3.SignedAngle(cube.transform.forward, normal, cube.transform.right);
+                    cube.transform.RotateAround(cube.transform.position, cube.transform.right, angle);
                 }
             }
         }
-        else
+        else if (useBuildings)
         {
             //spawn buildings
             for (int i = 1; i < 2 * n - 1; i++)
@@ -66,13 +74,15 @@ public class SpawnOnSphere : MonoBehaviour {
 
                     int index = UnityEngine.Random.Range(0, buildingsPrefabsList.Count);
                     GameObject building = Instantiate(buildingsPrefabsList[index]);
-                    buildingsList.Add(building);
                     building.transform.SetParent(buildingContainer.transform);
                     building.transform.position = new Vector3(x, y, z);
-                    building.transform.localScale = new Vector3(1f, 1f, 1f);
+                    building.transform.localScale = new Vector3(buildingsScale, buildingsScale, buildingsScale);
                     //building orientation
+                    Vector3 forward = new Vector3(x, 0, z).normalized;
+                    building.transform.rotation = Quaternion.FromToRotation(building.transform.forward, forward);
                     Vector3 normal = building.transform.position.normalized;
-                    building.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+                    float angle = Vector3.SignedAngle(building.transform.forward, normal, building.transform.right);
+                    building.transform.RotateAround(building.transform.position, building.transform.right, angle);
                 }
             }
         }
@@ -81,14 +91,10 @@ public class SpawnOnSphere : MonoBehaviour {
 
     public void Reset()
     {
-        buildingContainer = GameObject.Find("BuildingContainer");
-        
-        if (buildingContainer.transform.childCount != 0)
+        GameObject[] buildingsArray = GameObject.FindGameObjectsWithTag("building");
+        foreach(GameObject go in buildingsArray)
         {
-            foreach(GameObject go in buildingsList)
-            {
-                DestroyImmediate(go);
-            }
+            DestroyImmediate(go);
         }
     }
 }
