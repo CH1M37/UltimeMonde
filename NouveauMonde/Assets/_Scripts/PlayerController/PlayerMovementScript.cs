@@ -15,7 +15,6 @@ public class PlayerMovementScript : MonoBehaviour {
     private float rotationSpeed;
 
     private Vector3 moveDirection;
-    private Vector3 cameraForward;
     private Camera mainCamera;
 
     private Rigidbody rb;

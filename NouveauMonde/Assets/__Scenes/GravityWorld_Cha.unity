@@ -4122,7 +4122,7 @@ SphereCollider:
   m_GameObject: {fileID: 1590066930}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -4218,7 +4218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f872bb6b5fbeeb24a8438ce836f4728e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  n: 50
+  n: 3
+  buildingsPrefabsList:
+  - {fileID: 1298999957167646, guid: 9b27e40823e80a54390cefeeed8f3e9f, type: 2}
+  - {fileID: 1904705318604228, guid: dc9ed9bf110631441aa0b43fa9213bf0, type: 2}
+  - {fileID: 1053043639027472, guid: 5d99b378d2cdb314993aa8f1f37437f3, type: 2}
 --- !u!1 &1594690257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4405,6 +4409,34 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630692633}
   m_CullTransparentMesh: 0
+--- !u!1 &1666533626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1666533627}
+  m_Layer: 0
+  m_Name: BuildingContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1666533627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666533626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.56205, y: -14.342414, z: 17.191063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1701046871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4980847777001106, guid: 5ddcd840fa885854c911000d371d9514,
