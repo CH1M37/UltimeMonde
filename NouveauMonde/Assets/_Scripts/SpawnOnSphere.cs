@@ -18,7 +18,11 @@ public class SpawnOnSphere : MonoBehaviour {
     [SerializeField]
     private bool useCubes = true;
     [SerializeField]
-    private float buildingsScale = 1f;
+    private float buildingsXZScale = 0.03f;
+    [SerializeField]
+    private float buildingsYScale = 0.02f;
+    [SerializeField]
+    private float cubeScale = 0.3f;
 
     private GameObject planet;
     private GameObject buildingContainer;
@@ -49,7 +53,7 @@ public class SpawnOnSphere : MonoBehaviour {
                     GameObject cube = Instantiate(cubePrefab);
                     cube.transform.SetParent(buildingContainer.transform);
                     cube.transform.position = new Vector3(x, y, z);
-                    cube.transform.localScale = new Vector3(buildingsScale, buildingsScale, buildingsScale);
+                    cube.transform.localScale = new Vector3(cubeScale, cubeScale, cubeScale);
                     //cube orientation
                     Vector3 forward = new Vector3(x, 0, z).normalized ;
                     cube.transform.rotation = Quaternion.FromToRotation(cube.transform.forward, forward);
@@ -76,12 +80,12 @@ public class SpawnOnSphere : MonoBehaviour {
                     GameObject building = Instantiate(buildingsPrefabsList[index]);
                     building.transform.SetParent(buildingContainer.transform);
                     building.transform.position = new Vector3(x, y, z);
-                    building.transform.localScale = new Vector3(buildingsScale, buildingsScale, buildingsScale);
+                    building.transform.localScale = new Vector3(buildingsXZScale, buildingsYScale, buildingsXZScale);
                     //building orientation
                     Vector3 forward = new Vector3(x, 0, z).normalized;
                     building.transform.rotation = Quaternion.FromToRotation(building.transform.forward, forward);
                     Vector3 normal = building.transform.position.normalized;
-                    float angle = Vector3.SignedAngle(building.transform.forward, normal, building.transform.right);
+                    float angle = Vector3.SignedAngle(building.transform.up, normal, building.transform.right);
                     building.transform.RotateAround(building.transform.position, building.transform.right, angle);
                 }
             }
