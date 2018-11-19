@@ -9,14 +9,24 @@ public class Spawner : MonoBehaviour
     private GameObject victoryPrefab;
     [SerializeField]
     private GameObject playerPrefab;
+    [SerializeField]
+    private bool isRandom = false;
+    [Header("Spherical Angles")]
+    [SerializeField]
+    private float teta = 0f;
+    [SerializeField]
+    private float phi = 0f;
+
     private GameObject planet;
     private int victorySpawnIndex;
     private Transform victorySpawnPoint;
+    private float radius;
 
     // Use this for initialization
     void Start()
     {
         planet = GameObject.FindGameObjectWithTag("planet");
+        radius = planet.GetComponent<SphereCollider>().radius * planet.transform.localScale.x;
         spawnPointsList = new List<Transform>();
         //Initialize List
         for (int i = 0; i < transform.childCount; i++)
@@ -39,15 +49,29 @@ public class Spawner : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        foreach (Transform spawnPoint in spawnPointsList)
+        if (!isRandom)
         {
-            float distanceToVictory = (victorySpawnPoint.position - spawnPoint.position).magnitude;
+            float x = radius * Mathf.Sin(teta) * Mathf.Sin(phi);
+            float y = radius * Mathf.Cos(phi);
+            float z = radius * Mathf.Cos(teta) * Mathf.Sin(phi);
 
-            if (Mathf.Abs(distanceToVictory - planet.transform.lossyScale.x) < 1f)
+            Vector3 startPos = new Vector3(x, y, z);
+            Instantiate(playerPrefab, startPos, Quaternion.identity);
+        }
+
+        if (isRandom)
+        {
+            foreach (Transform spawnPoint in spawnPointsList)
             {
-                Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+                float distanceToVictory = (victorySpawnPoint.position - spawnPoint.position).magnitude;
+
+                if (Mathf.Abs(distanceToVictory - planet.transform.lossyScale.x) < 1f)
+                {
+                    Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+                }
             }
         }
+        
     }
 
 }

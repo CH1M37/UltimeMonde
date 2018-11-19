@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attractor : MonoBehaviour {
-    [SerializeField]
-    private Rigidbody ball;
+    private Rigidbody player;
     [SerializeField]
     private float attractorCoeff;
 
@@ -14,12 +13,13 @@ public class Attractor : MonoBehaviour {
     private Vector3 attractorPos;
 
 	void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         attractorPos = this.transform.position;
 	}
 	
 	void FixedUpdate () {
 
-        ballPos = ball.transform.position;
+        ballPos = player.transform.position;
         Vector3 direction = attractorPos - ballPos;
         float distanceToBall = Vector3.Magnitude(direction);
         Vector3 attractorForce = (attractorCoeff / Mathf.Pow(distanceToBall, 2)) * Vector3.Normalize(direction);
@@ -27,7 +27,7 @@ public class Attractor : MonoBehaviour {
         //Debug.Log("Attractor : " + this.name + "Distance to ball : " + distanceToBall);
         if (distanceToBall<= 5f* attractionRadius)
         {
-            ball.AddForce(attractorForce);
+            player.AddForce(attractorForce);
         }
 
 	}
