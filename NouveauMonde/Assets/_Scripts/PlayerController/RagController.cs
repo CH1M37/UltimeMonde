@@ -4,32 +4,27 @@ using UnityEngine;
 
 public class RagController : MonoBehaviour {
 
+    private Vector3 moveDirection;
+
     public GameObject CubeController;
     public GameObject Animation;
 
-    public float speed = 0.1f;
-    
+    public float speed = 0.5f;
+
 	void Update () {
 
-        // Control by translation
-        /*
-        if (Input.GetKey(KeyCode.Z))
-        {
-            transform.Translate(Vector3.forward * speed);
-        }
-        */
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        // Control by animation
-        
-        if (Input.GetKey(KeyCode.Z))
-        {
+        moveDirection = (v * transform.forward + h * transform.right).normalized;
+
+        CubeController.transform.Translate(moveDirection * speed);
+
+        // Déclancher animation pieds si ZQSD
+        //if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D))
+        if (moveDirection.magnitude > 0)
+        {   
             Animation.GetComponent<Animator>().enabled = true;
-            CubeController.transform.Translate(Vector3.forward * speed);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            Animation.GetComponent<Animator>().enabled = true;
-            CubeController.transform.Translate(Vector3.back * speed);
         }
         else
         {
