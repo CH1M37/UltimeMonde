@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114080084549360760}
   m_Layer: 0
   m_Name: custom-building_003
-  m_TagString: Untagged
+  m_TagString: building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,8 +216,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053043639027472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.48, y: 19.78, z: -7.46}
+  m_LocalRotation: {x: -0.08487666, y: -0, z: -0.30430743, w: 0.948785}
+  m_LocalPosition: {x: -4.39, y: 4.86, z: -5.85}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4079623599802082}
@@ -231,7 +231,7 @@ Transform:
   - {fileID: 4408107923894914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.009000001, y: 43.08, z: -34.281002}
 --- !u!4 &4408107923894914
 Transform:
   m_ObjectHideFlags: 1
@@ -771,3 +771,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyedPrefab: {fileID: 1053043639027472, guid: 93980e5e3c494874e960f7909c669ad3,
     type: 2}
+  buildingScore: 100

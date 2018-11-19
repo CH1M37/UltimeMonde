@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 114487106169108990}
   m_Layer: 0
   m_Name: custom-building_014
-  m_TagString: Untagged
+  m_TagString: building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,8 +620,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838305062567194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.26, y: 18.37, z: 14.135994}
+  m_LocalRotation: {x: 0.30737048, y: -0, z: -0.17960393, w: 0.9344869}
+  m_LocalPosition: {x: -10.169209, y: 3.7705002, z: 12.201776}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4108934142772190}
@@ -1432,3 +1432,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyedPrefab: {fileID: 1838305062567194, guid: b7da2ab2d5ca4ef429f5d091e7ceb052,
     type: 2}
+  buildingScore: 100
