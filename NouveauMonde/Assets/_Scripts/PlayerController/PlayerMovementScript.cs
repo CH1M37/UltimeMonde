@@ -11,8 +11,11 @@ public class PlayerMovementScript : MonoBehaviour {
     private float jumpForce;
     [SerializeField]
     private bool canJump = false;
+    [SerializeField]
+    private float rotationSpeed;
 
     private Vector3 moveDirection;
+    private Vector3 cameraForward;
     private Camera mainCamera;
 
     private Rigidbody rb;
@@ -25,25 +28,25 @@ public class PlayerMovementScript : MonoBehaviour {
 
     void Update()
     {
-        Vector3 cameraForwardDir = mainCamera.transform.forward.normalized;
-
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        //moveDirection = new Vector3(h, 0, v).normalized;
-        moveDirection = (v * cameraForwardDir + h * mainCamera.transform.right).normalized;
+        cameraForward = mainCamera.transform.forward;
+        moveDirection = (v * transform.forward + h * mainCamera.transform.right).normalized;
 
         //Jump
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(transform.up * jumpForce);
         }
-     
+
+        //Rotate
+        transform.RotateAround(transform.position, transform.up, Time.deltaTime * Input.GetAxisRaw("Camera") * rotationSpeed);
     }
 
     void FixedUpdate()
     {
-        //rb.MovePosition(rb.position + transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+        //move
         if(rb.velocity.magnitude < maxSpeed)
         {
             rb.AddForce(moveDirection * moveSpeed);
