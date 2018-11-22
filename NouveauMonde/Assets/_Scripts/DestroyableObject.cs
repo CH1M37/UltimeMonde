@@ -25,7 +25,7 @@ public class DestroyableObject : MonoBehaviour {
             timeManager.timeSinceLastDestruction = 0f;
             timeManager.checkWaste = true;
             GameObject destroyedObject = Instantiate(destroyedPrefab, gameObject.transform.position, gameObject.transform.rotation);
-            destroyedObject.transform.localScale = gameObject.transform.localScale;
+            destroyedObject.transform.localScale = gameObject.transform.lossyScale;
             Destroy(gameObject);
 
             scoreManager.UpdateScore(buildingScore);
