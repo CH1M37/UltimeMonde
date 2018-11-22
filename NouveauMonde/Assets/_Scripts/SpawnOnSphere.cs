@@ -27,11 +27,13 @@ public class SpawnOnSphere : MonoBehaviour {
     private GameObject planet;
     private GameObject buildingContainer;
 
-    private List<GameObject> buildingsList;
+    private List<Vector3> posDir;
 
     public void SpawnBuildings()
     {
         Reset();
+
+        posDir = new List<Vector3>();
 
         buildingContainer = GameObject.Find("BuildingContainer");
         planet = GameObject.FindGameObjectWithTag("planet");
@@ -75,18 +77,24 @@ public class SpawnOnSphere : MonoBehaviour {
                     float x = radius * Mathf.Sin(teta) * Mathf.Sin(phi);
                     float y = radius * Mathf.Cos(phi);
                     float z = radius * Mathf.Cos(teta) * Mathf.Sin(phi);
+                    Vector3 position = new Vector3(x, y, z);
+
+                    Vector3 ePhi = Mathf.Cos(phi)*Mathf.Sin(teta)*Vector3.right - Mathf.Sin(phi) * Vector3.up + Mathf.Cos(phi) * Mathf.Cos(teta) * Vector3.forward;
+                    posDir.Add(position);
+                    posDir.Add(ePhi);
 
                     int index = UnityEngine.Random.Range(0, buildingsPrefabsList.Count);
                     GameObject building = Instantiate(buildingsPrefabsList[index]);
                     building.transform.SetParent(buildingContainer.transform);
-                    building.transform.position = new Vector3(x, y, z);
+                    building.transform.position = position;
                     building.transform.localScale = new Vector3(buildingsXZScale, buildingsYScale, buildingsXZScale);
+                    
                     //building orientation
                     Vector3 forward = new Vector3(x, 0, z).normalized;
-                    building.transform.rotation = Quaternion.FromToRotation(building.transform.forward, forward);
                     Vector3 normal = building.transform.position.normalized;
-                    float angle = Vector3.SignedAngle(building.transform.up, normal, building.transform.right);
-                    building.transform.RotateAround(building.transform.position, building.transform.right, angle);
+                    building.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+                    float angle = Vector3.SignedAngle(building.transform.right, ePhi, normal);
+                    building.transform.RotateAround(building.transform.position, building.transform.up, angle);
                 }
             }
         }
@@ -101,4 +109,25 @@ public class SpawnOnSphere : MonoBehaviour {
             DestroyImmediate(go);
         }
     }
+    /*
+     * Draw ePhi vector (spherical coordinates)
+    void OnDrawGizmos()
+    {
+        // Draws a 5 unit long red line in front of the object
+        Gizmos.color = Color.red;
+        buildingContainer = GameObject.Find("BuildingContainer");
+
+        if(posDir.Count > 0)
+        {
+             for (int i=0; i < buildingContainer.transform.childCount-1; i+=2)
+             {
+                Vector3 position = posDir[i];
+                Vector3 dir = posDir[i+1];
+
+                Gizmos.DrawRay(position, dir * 10f);
+             }
+        }
+       
+    }
+    */
 }
